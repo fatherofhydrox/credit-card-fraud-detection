@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Credit Card Fraud Detection</h1>
+
+        <form action="/predict" method="post">
+            <label for="risk_score">Risk Score (V4):</label>
+            <input type="text" name="risk_score" required><br>
+
+            <label for="behavior_anomaly">Behavior Anomaly (V10):</label>
+            <input type="text" name="behavior_anomaly" required><br>
+
+            <label for="transaction_spike">Transaction Spike (V11):</label>
+            <input type="text" name="transaction_spike" required><br>
+
+            <label for="pattern_shift">Pattern Shift (V12):</label>
+            <input type="text" name="pattern_shift" required><br>
+
+            <label for="suspicious_level">Suspicious Level (V14):</label>
+            <input type="text" name="suspicious_level" required><br>
+
+            <label for="amount">Transaction Amount:</label>
+            <input type="text" name="amount" required><br>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+        <div class="result">
+            <h3>{{ prediction_text }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
